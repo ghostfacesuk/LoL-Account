@@ -73,6 +73,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.Text = "-- Account Select --";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
@@ -80,9 +81,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(36, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Select Account:";
+            this.label2.Text = "Stored Accounts:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button2

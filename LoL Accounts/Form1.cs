@@ -26,6 +26,10 @@ namespace LoL_Accounts
             if (File.Exists(accountsFilePath))
             {
                 string[] accountNames = File.ReadAllLines(accountsFilePath);
+
+                // Clear the existing items in the ComboBox before adding the new ones
+                comboBox1.Items.Clear();
+
                 comboBox1.Items.AddRange(accountNames);
             }
         }
@@ -82,6 +86,9 @@ namespace LoL_Accounts
                     File.Copy(sourceFilePath, destinationFilePath, true);
 
                     MessageBox.Show("Account created successfully!");
+
+                    // Update dropdown menu
+                    PopulateAccountDropdown();
                 }
                 catch (Exception ex)
                 {

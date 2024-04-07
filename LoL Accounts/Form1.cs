@@ -138,8 +138,8 @@ namespace LoL_Accounts
                     string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts", $"{selectedAccount}.yaml");
                     string destinationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
 
-                    // Copy the file to the destination folder
-                    File.Copy(sourceFilePath, Path.Combine(destinationFolderPath, $"{selectedAccount}.yaml"), true);
+                    // Copy the file to the destination folder with the name "RiotGamesPrivateSettings.yaml"
+                    File.Copy(sourceFilePath, Path.Combine(destinationFolderPath, "RiotGamesPrivateSettings.yaml"), true);
 
                     MessageBox.Show("Account loaded successfully!");
                 }

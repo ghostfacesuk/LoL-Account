@@ -153,5 +153,52 @@ namespace LoL_Accounts
                 MessageBox.Show("Please select an account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Delete account button
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Get the selected account name from the dropdown list
+            string selectedAccount = comboBox1.SelectedItem as string;
+            if (!string.IsNullOrEmpty(selectedAccount))
+            {
+                try
+                {
+                    // Source and destination file paths
+                    string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts", $"{selectedAccount}.yaml");
+                    string accountsFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts");
+                    string accountsFileName = Path.Combine(accountsFolderPath, "accounts.txt");
+
+                    // Remove the selected account from the dropdown list
+                    comboBox1.Items.Remove(selectedAccount);
+
+                    // Remove the corresponding .yaml file from the "Accounts" directory
+                    if (File.Exists(sourceFilePath))
+                    {
+                        File.Delete(sourceFilePath);
+                    }
+
+                    // Remove the account from the list in the accounts.txt file
+                    if (File.Exists(accountsFileName))
+                    {
+                        List<string> accounts = File.ReadAllLines(accountsFileName).ToList();
+                        accounts.Remove(selectedAccount);
+                        File.WriteAllLines(accountsFileName, accounts);
+                    }
+
+                    MessageBox.Show("Account deleted successfully!");
+
+                    // Update dropdown menu
+                    PopulateAccountDropdown();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an account to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

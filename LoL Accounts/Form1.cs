@@ -41,27 +41,32 @@ namespace LoL_Accounts
                         Directory.CreateDirectory(accountsFolderPath);
                     }
 
-                    // Create a new .txt file and store the account name in the first directory
+                    // Check if the account name already exists
                     string fileName = Path.Combine(accountsFolderPath, "accounts.txt");
+                    if (File.Exists(fileName))
+                    {
+                        string[] existingAccounts = File.ReadAllLines(fileName);
+                        foreach (string existingAccount in existingAccounts)
+                        {
+                            if (existingAccount.Equals(accountName, StringComparison.OrdinalIgnoreCase))
+                            {
+                                MessageBox.Show("Account already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return; // Exit the method if the account already exists
+                            }
+                        }
+                    }
+
+                    // Create a new .txt file and store the account name
                     using (StreamWriter writer = new StreamWriter(fileName, true))
                     {
                         writer.WriteLine(accountName);
                     }
 
-                    // Store accounts.txt file in the second directory
-                    string secondFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
-                    if (!Directory.Exists(secondFolderPath))
-                    {
-                        Directory.CreateDirectory(secondFolderPath);
-                    }
-                    string secondFileName = Path.Combine(secondFolderPath, "accounts.txt");
-                    File.Copy(fileName, secondFileName, true);
-
-                    // Copy RiotGamesPrivateSettings.yaml to the Accounts folder
+                    // Rename and copy RiotGamesPrivateSettings.yaml to the Accounts folder
                     string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\RiotGamesPrivateSettings.yaml");
-                    string destinationFilePath = Path.Combine(accountsFolderPath, "RiotGamesPrivateSettings.yaml");
+                    string destinationFilePath = Path.Combine(accountsFolderPath, $"{accountName}.yaml");
 
-                    // Copy the file
+                    // Copy the file with renaming
                     File.Copy(sourceFilePath, destinationFilePath, true);
 
                     MessageBox.Show("Account created successfully!");

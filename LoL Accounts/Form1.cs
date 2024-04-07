@@ -134,9 +134,18 @@ namespace LoL_Accounts
             {
                 try
                 {
+                    // Destination folder path
+                    string destinationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
+
+                    // Delete the existing "ShutdownData.yaml" file if it exists
+                    string shutdownDataFilePath = Path.Combine(destinationFolderPath, "ShutdownData.yaml");
+                    if (File.Exists(shutdownDataFilePath))
+                    {
+                        File.Delete(shutdownDataFilePath);
+                    }
+
                     // Source and destination file paths
                     string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts", $"{selectedAccount}.yaml");
-                    string destinationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
 
                     // Copy the file to the destination folder with the name "RiotGamesPrivateSettings.yaml"
                     File.Copy(sourceFilePath, Path.Combine(destinationFolderPath, "RiotGamesPrivateSettings.yaml"), true);

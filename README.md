@@ -1,11 +1,12 @@
 # LoL Account Manager
+![LoL Account Manager](https://github.com/ghostfacesuk/Dayz_Logs/blob/main/UI.png)
 
 ## Requirements
 - .Net 4.8 
 - LoL installed
 
 ## Download
-[Release 1.0.3.Zip file](https://github.com/ghostfacesuk/Dayz_Logs/blob/main/DayZ_Log/bin/Release/net6.0-windows/DayZ%20Crash%20Report%20App%201.0.3.zip)
+[Release LoL Accounts.zip file](https://github.com/ghostfacesuk/Dayz_Logs/blob/main/DayZ_Log/bin/Release/net6.0-windows/LoL%20Accounts.zip)
 
 ## Usage 
 - Download zip file and extract to PC (Windows only)

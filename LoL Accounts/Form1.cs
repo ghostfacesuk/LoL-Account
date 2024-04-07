@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LoL_Accounts
 {
@@ -34,9 +35,19 @@ namespace LoL_Accounts
             }
         }
 
+        // Main form loading
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            label1.Parent = pictureBox1;
+            label2.Parent = pictureBox1;
+            button1.Parent = pictureBox1;
+            button2.Parent = pictureBox1;
+            button3.Parent = pictureBox1;
+            label1.BackColor = Color.Transparent;
+            label2.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
         }
 
         // Create Account button
@@ -110,13 +121,13 @@ namespace LoL_Accounts
         // Create Account label
         private void label1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         // Account selection label
         private void label2_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         // Account selection
@@ -216,6 +227,11 @@ namespace LoL_Accounts
             {
                 MessageBox.Show("Please select an account to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

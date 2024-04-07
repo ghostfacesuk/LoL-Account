@@ -13,6 +13,7 @@
 - Run LoL Accounts.exe
 - Enter the name of your account into the "Create and store..." input box (example Dave)
 - Click Store - this will save your current account info locally. 
+- Close client and sign out...
 - Repeat the steps for all LoL accounts you have, again ensure you have 'Stay signed in' ticked for each login. 
 - Once accounts are recorded simply select account from dropdown and select 'Load'. Make you the LoL client is not running when you do this! 
 - Launch the LoL client. If done correctly it will load you straight into the profile you nominated without any login prompts. 

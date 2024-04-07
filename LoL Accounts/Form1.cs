@@ -134,21 +134,29 @@ namespace LoL_Accounts
             {
                 try
                 {
-                    // Destination folder path
-                    string destinationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
+                    // Destination folder paths
+                    string riotClientDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
+                    string lolDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\League of Legends\Data");
 
-                    // Delete the existing "ShutdownData.yaml" file if it exists
-                    string shutdownDataFilePath = Path.Combine(destinationFolderPath, "ShutdownData.yaml");
-                    if (File.Exists(shutdownDataFilePath))
+                    // Delete the existing "ShutdownData.yaml" file if it exists in Riot Client Data folder
+                    string riotClientShutdownDataFilePath = Path.Combine(riotClientDataFolderPath, "ShutdownData.yaml");
+                    if (File.Exists(riotClientShutdownDataFilePath))
                     {
-                        File.Delete(shutdownDataFilePath);
+                        File.Delete(riotClientShutdownDataFilePath);
+                    }
+
+                    // Delete the existing "ShutdownData.yaml" file if it exists in League of Legends Data folder
+                    string lolShutdownDataFilePath = Path.Combine(lolDataFolderPath, "ShutdownData.yaml");
+                    if (File.Exists(lolShutdownDataFilePath))
+                    {
+                        File.Delete(lolShutdownDataFilePath);
                     }
 
                     // Source and destination file paths
                     string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts", $"{selectedAccount}.yaml");
 
-                    // Copy the file to the destination folder with the name "RiotGamesPrivateSettings.yaml"
-                    File.Copy(sourceFilePath, Path.Combine(destinationFolderPath, "RiotGamesPrivateSettings.yaml"), true);
+                    // Copy the file to the Riot Client Data folder with the name "RiotGamesPrivateSettings.yaml"
+                    File.Copy(sourceFilePath, Path.Combine(riotClientDataFolderPath, "RiotGamesPrivateSettings.yaml"), true);
 
                     MessageBox.Show("Account loaded successfully!");
                 }

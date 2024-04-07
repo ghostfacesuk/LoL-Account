@@ -16,6 +16,18 @@ namespace LoL_Accounts
         public Form1()
         {
             InitializeComponent();
+            PopulateAccountDropdown(); // Populate the account dropdown list on form
+        }
+
+        // Populate the dropdown list with account names from accounts.txt
+        private void PopulateAccountDropdown()
+        {
+            string accountsFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts\accounts.txt");
+            if (File.Exists(accountsFilePath))
+            {
+                string[] accountNames = File.ReadAllLines(accountsFilePath);
+                comboBox1.Items.AddRange(accountNames);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,6 +104,47 @@ namespace LoL_Accounts
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // Account selection label
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Account selection
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Load account button
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Get the selected account name from the dropdown list
+            string selectedAccount = comboBox1.SelectedItem as string;
+            if (!string.IsNullOrEmpty(selectedAccount))
+            {
+                try
+                {
+                    // Source and destination file paths
+                    string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data\Accounts", $"{selectedAccount}.yaml");
+                    string destinationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Riot Games\Riot Client\Data");
+
+                    // Copy the file to the destination folder
+                    File.Copy(sourceFilePath, Path.Combine(destinationFolderPath, $"{selectedAccount}.yaml"), true);
+
+                    MessageBox.Show("Account loaded successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

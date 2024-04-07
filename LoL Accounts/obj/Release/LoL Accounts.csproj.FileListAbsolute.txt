@@ -1,0 +1,11 @@
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\bin\Release\LoL Accounts.exe.config
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\bin\Release\LoL Accounts.exe
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\bin\Release\LoL Accounts.pdb
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.csproj.AssemblyReference.cache
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.csproj.SuggestedBindingRedirects.cache
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL_Accounts.Form1.resources
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL_Accounts.Properties.Resources.resources
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.csproj.GenerateResource.cache
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.csproj.CoreCompileInputs.cache
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.exe
+C:\Users\ssgho\source\repos\LoL Accounts\LoL Accounts\obj\Release\LoL Accounts.pdb
